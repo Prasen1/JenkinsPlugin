@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+The MIT License
+
+Copyright 2022 Catchpoint Systems.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+    <f:entry title="${%Key}" field="key">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="${%Secret}">
+        <f:password field="secret" />
+    </f:entry>
+    <f:block>
+        <table>
+            <f:optionalBlock field="useWebTest" title="${%Web_Test}" inline="true">
+                <f:entry title="${%Test_URL}" field="testUrl">
+                    <f:textbox/>
+                </f:entry>
+            </f:optionalBlock>
+            <f:optionalBlock field="useTransactionTest" title="${%Transaction_Test}" inline="true">
+                <f:entry title="${%Test_Script}" field="testScript">
+                    <f:textarea/> 
+                </f:entry>
+            </f:optionalBlock>
+            <f:optionalBlock field="useDnsTest" title="${%DNS_Test}" inline="true">
+                <f:entry title="${%DNS_Domain}" field="testDomain">
+                    <f:textbox/>
+                </f:entry>
+            </f:optionalBlock>
+            <f:optionalBlock field="useTracerouteTest" title="${%Traceroute_Test}" inline="true">
+                <f:entry title="${%Traceroute_Target}" field="testTarget">
+                    <f:textbox/>
+                </f:entry>
+            </f:optionalBlock>
+        </table>
+    </f:block>
+    <f:entry title="${%Node_Id}" field="testNodeId">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="${%Node_Name}" field="testNodeName" disabled="true">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="${%Fail_on_Error}" field="failOnTestError"
+             description="${%FailOnErrDesc}">
+        <f:checkbox />
+    </f:entry>
+    <f:entry title="${%Use_Instant_Test}" field="useInstantTest"
+             description="${%UseInstantTestDesc}">
+        <f:checkbox />
+    </f:entry>
+</j:jelly>
